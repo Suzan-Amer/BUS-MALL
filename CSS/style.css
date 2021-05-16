@@ -32,16 +32,16 @@ h2{
     color: rgb(241, 86, 24);
     background-color: rgb(21, 21, 65);
     position: absolute;
-    padding-left: 30px;
+    padding-left: 60px;
 }
 #result{
     font-size: 20px;
     color:rgb(241, 86, 24) ;
-    background-color:rgb(21, 21, 65) ;
+    
     position: absolute;
     padding-top: 60px;
     padding-left: 10px;
-    border: rgb(21, 21, 65);
+    border: rgb(241, 86, 24);
 }
 
 img{
