@@ -13,13 +13,17 @@ let userChoice = 0 ;
 
 let allProduct = [];
 
+// let productName =[];
+// let productVote = [];
+// let productshow= [];
+
 function BussImg(name , source){
     this.name = name;
     this.source = source; 
     this.vote = 0;
     this.show = 0; 
     allProduct.push(this);
-
+//    productName.push(this.name);
 }
 
 new BussImg ('bag' , 'img/bag.jpg');
@@ -57,11 +61,21 @@ function renderProductImg() {
 
 do {
     leftImgIndex = getRandomProduct ();
-} while (leftImgIndex === centerImgIndex === rightImgIndex);
+    rightImgIndex = getRandomProduct ();
+
+} while (leftImgIndex === centerImgIndex || centerImgIndex === rightImgIndex || leftImgIndex === rightImgIndex);
 
 leftImageElement.src = allProduct [leftImgIndex].source ;
 centerImageElement.src = allProduct [centerImgIndex].source ;
 rightImageElement.src = allProduct[rightImgIndex].source ;
+
+
+ allProduct[leftImgIndex].show++ ;
+ allProduct[centerImgIndex].show++ ;
+ allProduct[rightImgIndex].show++ ;
+
+ 
+
 }
 renderProductImg();
 
@@ -95,12 +109,64 @@ renderProductImg();
     rightImageElement.removeEventListener ('click' , handClick);
 
     let list =document.getElementById('result');
+   let butn = document.getElementById('butn');
+   butn.addEventListener('click',result )
+
+
+
     let liElement;
     for ( let i = 0 ; i < allProduct.length; i++ ){
         liElement = document.createElement ('li');
         list.appendChild(liElement);
-        liElement.textContent=`Image ${i}: ${allProduct[i].name} had ${allProduct[i].vote} vote `;
+        liElement.textContent=`Image ${i}: ${allProduct[i].name} had ${allProduct[i].vote} vote,and was seen ${allProduct[i].show}`;
+
+// for ( let i =0 ; i < allProduct.length ; i++){
+//     productVote.push(allProduct[i].vote)
+//     productshow.push(allProduct[i].show)
+
+// }
+//  chartPro();
     }
 }
+
 }
-console.log(allProduct);
+
+// console.log(allProduct);
+
+// function chartPro (){
+//    let ctx = document.getElementById('myChart').getContext('2d');
+// let myChart = new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//         labels: productName,
+//         datasets: [{
+//             label: '# of Votes',
+//             data: productVote ,
+//             backgroundColor: [
+//                 'redorange',
+//             ],
+//             borderColor: [
+//                 'redorange'
+//             ],
+//             borderWidth: 1
+//         },{
+//             label: '# of shown',
+//             data: productshow ,
+//          backgroundColor: 'red',
+//          borderColor: 'red',
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             y: {
+//                 beginAtZero: true
+//             }
+//         }
+//     }
+// });
+// }
+
+
+// console.log('name',productName);
+// console.log('vote',productVote);
+// console.log('show',productshow);
