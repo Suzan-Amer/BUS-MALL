@@ -26,6 +26,24 @@ function BussImg(name, source) {
     productName.push(this.name);
 }
 
+
+function loProduct (){
+    let dataSt= JSON.stringify(prodSt);
+    localStorage.setItem('prod', dataSt);
+
+}
+
+
+function prodData (){
+    let stObj = localStorage.getItem('img');
+    let noObj = JSON.parse(stObj);
+    if (noObj !== null){
+        prod  = noObj
+    }
+}
+
+
+
 new BussImg('bag', 'img/bag.jpg');
 new BussImg('banana', 'img/banana.jpg');
 new BussImg('bathroom', 'img/bathroom.jpg');
@@ -133,9 +151,11 @@ function handClick(event) {
             }
             chartPro();
         }
-        
+       
     }
 // }
+loProduct ()
+
 
 
 console.log(allProduct);
@@ -173,7 +193,9 @@ function chartPro() {
     });
 }
 
+prodData ();
 
-console.log('name', productName);
-console.log('vote', productVote);
-console.log('show', productshow);
+
+// console.log('name', productName);
+// console.log('vote', productVote);
+// console.log('show', productshow);
